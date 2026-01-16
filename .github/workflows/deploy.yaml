@@ -7,3 +7,12 @@ on:
 permissions:
   id-token: write
   contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@5
+      - name: upload to s3
+        run: echo "Hello"
