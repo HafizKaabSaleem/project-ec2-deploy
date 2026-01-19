@@ -14,7 +14,10 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v5
-      - name: upload to s3
-        run: echo "Hello"
-      - name: Date
-        run: date
+      - name: aws credentials
+        uses: aws-actions/configure-aws-credentials@5.1.0
+        with:
+          role-to-assume: arn:aws:iam::830548085633:role/GitHubAction
+          aws-region: us-east-1
+      - name: access aws s3
+        run: aws s3 ls
